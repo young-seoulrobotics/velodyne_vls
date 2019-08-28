@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 2.8.3)
-project(velodyne_msgs)
+project(velodyne_msgs_vls)
 
 find_package(catkin REQUIRED COMPONENTS message_generation std_msgs)
 

@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 2.8.3)
-project(velodyne_laserscan)
+project(velodyne_laserscan_vls)
 
 find_package(catkin REQUIRED COMPONENTS
   roscpp

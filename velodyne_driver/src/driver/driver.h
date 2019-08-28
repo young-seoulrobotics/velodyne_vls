@@ -1,7 +1,7 @@
 /* -*- mode: C++ -*- */
 /*
  *  Copyright (C) 2012 Austin Robot Technology, Jack O'Quin
- * 
+ *
  *  License: Modified BSD Software License Agreement
  *
  *  $Id$
@@ -22,7 +22,7 @@
 #include <dynamic_reconfigure/server.h>
 
 #include <velodyne_driver/input.h>
-#include <velodyne_driver/VelodyneNodeConfig.h>
+#include <velodyne_driver_vls/VelodyneNodeConfig.h>
 
 namespace velodyne_driver
 {
@@ -40,11 +40,11 @@ public:
 private:
 
   ///Callback for dynamic reconfigure
-  void callback(velodyne_driver::VelodyneNodeConfig &config,
+  void callback(velodyne_driver_vls::VelodyneNodeConfig &config,
               uint32_t level);
 
   ///Pointer to dynamic reconfigure service srv_
-  boost::shared_ptr<dynamic_reconfigure::Server<velodyne_driver::
+  boost::shared_ptr<dynamic_reconfigure::Server<velodyne_driver_vls::
               VelodyneNodeConfig> > srv_;
 
   // configuration parameters
@@ -75,13 +75,13 @@ private:
   double   auto_alpha;
   uint32_t auto_npackets;
   double   auto_packet_rate;
-  uint8_t  curr_packet_rmode; //    [strongest return or farthest mode => Singular Retruns per firing]  
+  uint8_t  curr_packet_rmode; //    [strongest return or farthest mode => Singular Retruns per firing]
                               // or [Both  => Dual Retruns per fire]
   uint8_t  curr_packet_sensor_model; // extract the sensor id from packet
   double   slot_time ;
-  uint8_t  num_slots; 
+  uint8_t  num_slots;
   uint8_t  active_slots;
-  double   firing_cycle; 
+  double   firing_cycle;
   std::string dump_file; // string to hold pcap file name
 };
 

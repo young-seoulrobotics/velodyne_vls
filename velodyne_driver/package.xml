@@ -1,6 +1,6 @@
 <package>
 
-  <name>velodyne_driver</name>
+  <name>velodyne_driver_vls</name>
   <version>1.3.0</version>
   <description>
     ROS device driver for Velodyne 3D LIDARs.
@@ -26,7 +26,7 @@
   <build_depend>pluginlib</build_depend>
   <build_depend>roscpp</build_depend>
   <build_depend>tf</build_depend>
-  <build_depend>velodyne_msgs</build_depend>
+  <build_depend>velodyne_msgs_vls</build_depend>
 
   <!-- these build dependencies are only needed for unit testing -->
   <build_depend>roslaunch</build_depend>
@@ -39,7 +39,7 @@
   <run_depend>pluginlib</run_depend>
   <run_depend>roscpp</run_depend>
   <run_depend>tf</run_depend>
-  <run_depend>velodyne_msgs</run_depend>
+  <run_depend>velodyne_msgs_vls</run_depend>
 
   <export>
     <nodelet plugin="${prefix}/nodelet_velodyne.xml"/>

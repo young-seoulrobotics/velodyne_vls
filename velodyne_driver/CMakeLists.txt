@@ -1,13 +1,13 @@
 cmake_minimum_required(VERSION 2.8.3)
-project(velodyne_driver)
+project(velodyne_driver_vls)
 
-set(${PROJECT_NAME}_CATKIN_DEPS 
+set(${PROJECT_NAME}_CATKIN_DEPS
     diagnostic_updater
     dynamic_reconfigure
     nodelet
     roscpp
     tf
-    velodyne_msgs)
+    velodyne_msgs_vls)
 
 find_package(catkin REQUIRED COMPONENTS ${${PROJECT_NAME}_CATKIN_DEPS})
 
@@ -25,7 +25,7 @@ generate_dynamic_reconfigure_options(cfg/VelodyneNode.cfg)
 # objects needed by other ROS packages that depend on this one
 catkin_package(CATKIN_DEPENDS ${${PROJECT_NAME}_CATKIN_DEPS}
                INCLUDE_DIRS include
-               LIBRARIES velodyne_input)
+               LIBRARIES velodyne_input_vls)
 
 # compile the driver and input library
 add_subdirectory(src/lib)
@@ -63,7 +63,7 @@ if (CATKIN_ENABLE_TESTING)
     http://download.ros.org/data/velodyne/vlp16.pcap
     DESTINATION ${CATKIN_DEVEL_PREFIX}/${CATKIN_PACKAGE_SHARE_DESTINATION}/tests
     MD5 f45c2bb1d7ee358274e423ea3b66fd73)
-  
+
   # unit tests
   add_rostest(tests/pcap_node_hertz.test)
   add_rostest(tests/pcap_nodelet_hertz.test)
@@ -71,7 +71,7 @@ if (CATKIN_ENABLE_TESTING)
   add_rostest(tests/pcap_32e_nodelet_hertz.test)
   add_rostest(tests/pcap_vlp16_node_hertz.test)
   add_rostest(tests/pcap_vlp16_nodelet_hertz.test)
-  
+
   # parse check all the launch/*.launch files
   roslaunch_add_file_check(launch)
 

@@ -8,9 +8,9 @@ find_package(rostest REQUIRED)
 find_package(tf2_ros REQUIRED)
 
 # C++ gtests
-catkin_add_gtest(test_calibration test_calibration.cpp)
-add_dependencies(test_calibration ${catkin_EXPORTED_TARGETS})
-target_link_libraries(test_calibration velodyne_rawdata ${catkin_LIBRARIES})
+#catkin_add_gtest(test_calibration test_calibration.cpp)
+#add_dependencies(test_calibration ${catkin_EXPORTED_TARGETS})
+#target_link_libraries(test_calibration velodyne_rawdata ${catkin_LIBRARIES})
 
 # Download packet capture (PCAP) files containing test data.
 # Store them in devel-space, so rostest can easily find them.
