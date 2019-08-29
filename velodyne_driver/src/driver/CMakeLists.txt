@@ -2,7 +2,7 @@
 add_executable(velodyne_node_vls velodyne_node.cc driver.cc)
 add_dependencies(velodyne_node_vls velodyne_driver_vls_gencfg)
 target_link_libraries(velodyne_node_vls
-  velodyne_input
+  velodyne_input_vls
   ${catkin_LIBRARIES}
   ${libpcap_LIBRARIES}
 )
@@ -11,7 +11,7 @@ target_link_libraries(velodyne_node_vls
 add_library(driver_nodelet_vls nodelet.cc driver.cc)
 add_dependencies(driver_nodelet_vls velodyne_driver_vls_gencfg)
 target_link_libraries(driver_nodelet_vls
-  velodyne_input
+  velodyne_input_vls
   ${catkin_LIBRARIES}
   ${libpcap_LIBRARIES}
 )

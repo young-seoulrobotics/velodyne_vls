@@ -38,7 +38,7 @@
 #include <netinet/in.h>
 
 #include <ros/ros.h>
-#include <velodyne_msgs/VelodynePacket.h>
+#include <velodyne_msgs_vls/VelodynePacket.h>
 
 namespace velodyne_driver
 {
@@ -60,7 +60,7 @@ namespace velodyne_driver
      *          -1 if end of file
      *          > 0 if incomplete packet (is this possible?)
      */
-    virtual int getPacket(velodyne_msgs::VelodynePacket *pkt,
+    virtual int getPacket(velodyne_msgs_vls::VelodynePacket *pkt,
                           const double time_offset) = 0;
     virtual void setPacketRate( const double packet_rate ) = 0; // necessary for automatic adjustment of rpm
 
@@ -78,7 +78,7 @@ namespace velodyne_driver
                 uint16_t port = DATA_PORT_NUMBER);
     virtual ~InputSocket();
 
-    virtual int getPacket(velodyne_msgs::VelodynePacket *pkt, 
+    virtual int getPacket(velodyne_msgs_vls::VelodynePacket *pkt,
                           const double time_offset);
 
     void setDeviceIP( const std::string& ip );
@@ -107,7 +107,7 @@ namespace velodyne_driver
               double repeat_delay=0.0);
     virtual ~InputPCAP();
 
-    virtual int getPacket(velodyne_msgs::VelodynePacket *pkt, 
+    virtual int getPacket(velodyne_msgs_vls::VelodynePacket *pkt,
                           const double time_offset);
     void setDeviceIP( const std::string& ip );
     void setPacketRate( const double packet_rate ); // necessary for automatic adjustment of rpm

@@ -29,10 +29,10 @@ namespace velodyne_pointcloud
     // advertise output point cloud (before subscribing to input data)
     output_ =
       node.advertise<sensor_msgs::PointCloud2>("velodyne_points", 10);
-      
-    srv_ = boost::make_shared <dynamic_reconfigure::Server<velodyne_pointcloud::
+
+    srv_ = boost::make_shared <dynamic_reconfigure::Server<velodyne_pointcloud_vls::
       CloudNodeConfig> > (private_nh);
-    dynamic_reconfigure::Server<velodyne_pointcloud::CloudNodeConfig>::
+    dynamic_reconfigure::Server<velodyne_pointcloud_vls::CloudNodeConfig>::
       CallbackType f;
     f = boost::bind (&Convert::callback, this, _1, _2);
     srv_->setCallback (f);
@@ -43,8 +43,8 @@ namespace velodyne_pointcloud
                      &Convert::processScan, (Convert *) this,
                      ros::TransportHints().tcpNoDelay(true));
   }
-  
-  void Convert::callback(velodyne_pointcloud::CloudNodeConfig &config,
+
+  void Convert::callback(velodyne_pointcloud_vls::CloudNodeConfig &config,
                 uint32_t level)
   {
   ROS_INFO("Reconfigure Request");
@@ -53,7 +53,7 @@ namespace velodyne_pointcloud
   }
 
   /** @brief Callback for raw scan messages. */
-  void Convert::processScan(const velodyne_msgs::VelodyneScan::ConstPtr &scanMsg)
+  void Convert::processScan(const velodyne_msgs_vls::VelodyneScan::ConstPtr &scanMsg)
   {
     if (output_.getNumSubscribers() == 0)         // no one listening?
       return;                                     // avoid much work

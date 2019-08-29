@@ -155,7 +155,7 @@ namespace velodyne_rawdata
    *  @param pkt raw packet to unpack
    *  @param pc shared pointer to point cloud (points are appended)
    */
-  void RawData::unpack(const velodyne_msgs::VelodynePacket &pkt,
+  void RawData::unpack(const velodyne_msgs_vls::VelodynePacket &pkt,
                        VPointCloud &pc)
   {
     ROS_DEBUG_STREAM("Received packet, time: " << pkt.stamp);
@@ -294,7 +294,7 @@ namespace velodyne_rawdata
    *  @param pkt raw packet to unpack
    *  @param pc shared pointer to point cloud (points are appended)
    */
-  void RawData::unpack_hdl64(const velodyne_msgs::VelodynePacket &pkt,
+  void RawData::unpack_hdl64(const velodyne_msgs_vls::VelodynePacket &pkt,
                              VPointCloud &pc)
   {
     const raw_packet_t *raw = (const raw_packet_t *) &pkt.data[0];
@@ -355,7 +355,7 @@ namespace velodyne_rawdata
    *  @param pkt raw packet to unpack
    *  @param pc shared pointer to point cloud (points are appended)
    */
-  void RawData::unpack_vlp16(const velodyne_msgs::VelodynePacket &pkt,
+  void RawData::unpack_vlp16(const velodyne_msgs_vls::VelodynePacket &pkt,
                              VPointCloud &pc)
   {
     float azimuth_diff, azimuth_corrected_f;
@@ -437,7 +437,7 @@ namespace velodyne_rawdata
   }
 
 #if 0
-  void RawData::unpack_vlp32(const velodyne_msgs::VelodynePacket &pkt,
+  void RawData::unpack_vlp32(const velodyne_msgs_vls::VelodynePacket &pkt,
                              velodyne_rawdata::XYZIRBPointCloud &pc)
   {
     float azimuth_diff, azimuth_corrected_f;
@@ -525,7 +525,7 @@ namespace velodyne_rawdata
    *  @param pkt raw packet to unpack
    *  @param pc shared pointer to point cloud (points are appended)
    */
-  void RawData::unpack_vlp32(const velodyne_msgs::VelodynePacket &pkt,
+  void RawData::unpack_vlp32(const velodyne_msgs_vls::VelodynePacket &pkt,
                              VPointCloud &pc)
   {
     float azimuth_diff, azimuth_corrected_f;
@@ -612,7 +612,7 @@ namespace velodyne_rawdata
    *  @param pkt raw packet to unpack
    *  @param pc shared pointer to point cloud (points are appended)
    */
-  void RawData::unpack_vls128(const velodyne_msgs::VelodynePacket &pkt, VPointCloud &pc) {
+  void RawData::unpack_vls128(const velodyne_msgs_vls::VelodynePacket &pkt, VPointCloud &pc) {
     float azimuth_diff, azimuth_corrected_f;
     float last_azimuth_diff = 0;
     uint16_t azimuth, azimuth_next, azimuth_corrected;
@@ -740,7 +740,7 @@ namespace velodyne_rawdata
    *  @param pkt raw packet to unpack
    *  @param pc shared pointer to point cloud (points are appended)
    */
-  void RawData::unpack_hdl32(const velodyne_msgs::VelodynePacket &pkt,
+  void RawData::unpack_hdl32(const velodyne_msgs_vls::VelodynePacket &pkt,
                              VPointCloud &pc)
   {
     float azimuth_diff, azimuth_corrected_f;

@@ -9,7 +9,7 @@
 #include <boost/thread/lock_guard.hpp>
 
 #include <dynamic_reconfigure/server.h>
-#include <velodyne_laserscan/VelodyneLaserScanConfig.h>
+#include <velodyne_laserscan_vls/VelodyneLaserScanConfig.h>
 
 namespace velodyne_laserscan {
 
@@ -27,9 +27,9 @@ private:
   ros::Subscriber sub_;
   ros::Publisher pub_;
 
-  VelodyneLaserScanConfig cfg_;
-  dynamic_reconfigure::Server<VelodyneLaserScanConfig> srv_;
-  void reconfig(VelodyneLaserScanConfig& config, uint32_t level);
+  velodyne_laserscan_vls::VelodyneLaserScanConfig cfg_;
+  dynamic_reconfigure::Server<velodyne_laserscan_vls::VelodyneLaserScanConfig> srv_;
+  void reconfig(velodyne_laserscan_vls::VelodyneLaserScanConfig& config, uint32_t level);
 
   unsigned int ring_count_;
 };

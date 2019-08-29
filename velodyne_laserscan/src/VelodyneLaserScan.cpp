@@ -2,13 +2,13 @@
 #include <sensor_msgs/point_cloud2_iterator.h>
 
 namespace velodyne_laserscan {
-  
+
 VelodyneLaserScan::VelodyneLaserScan(ros::NodeHandle &nh, ros::NodeHandle &nh_priv) :
     ring_count_(0), nh_(nh), srv_(nh_priv)
 {
   ros::SubscriberStatusCallback connect_cb = boost::bind(&VelodyneLaserScan::connectCb, this);
   pub_ = nh.advertise<sensor_msgs::LaserScan>("scan", 10, connect_cb, connect_cb);
-  
+
   srv_.setCallback(boost::bind(&VelodyneLaserScan::reconfig, this, _1, _2));
 }
 
@@ -166,7 +166,7 @@ void VelodyneLaserScan::recvCallback(const sensor_msgs::PointCloud2ConstPtr& msg
   }
 }
 
-void VelodyneLaserScan::reconfig(VelodyneLaserScanConfig& config, uint32_t level)
+void VelodyneLaserScan::reconfig(velodyne_laserscan_vls::VelodyneLaserScanConfig& config, uint32_t level)
 {
   cfg_ = config;
 }

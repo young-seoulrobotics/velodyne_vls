@@ -30,7 +30,7 @@
 
 #include <ros/ros.h>
 #include <pcl_ros/point_cloud.h>
-#include <velodyne_msgs/VelodyneScan.h>
+#include <velodyne_msgs_vls/VelodyneScan.h>
 #include <velodyne_pointcloud/point_types.h>
 #include <velodyne_pointcloud/calibration.h>
 
@@ -161,7 +161,7 @@ namespace velodyne_rawdata
      */
     int setupOffline(std::string calibration_file, double max_range_, double min_range_);
 
-    void unpack(const velodyne_msgs::VelodynePacket &pkt, VPointCloud &pc);
+    void unpack(const velodyne_msgs_vls::VelodynePacket &pkt, VPointCloud &pc);
 
     void setParameters(double min_range, double max_range, double view_direction,
                        double view_width);
@@ -192,11 +192,11 @@ namespace velodyne_rawdata
     float vls_128_laser_azimuth_cache[16];
 
     /** add private function to handle each sensor **/
-    void unpack_vlp16(const velodyne_msgs::VelodynePacket &pkt, VPointCloud &pc);
-    void unpack_vlp32(const velodyne_msgs::VelodynePacket &pkt, VPointCloud &pc);
-    void unpack_hdl32(const velodyne_msgs::VelodynePacket &pkt, VPointCloud &pc);
-    void unpack_hdl64(const velodyne_msgs::VelodynePacket &pkt, VPointCloud &pc);
-    void unpack_vls128(const velodyne_msgs::VelodynePacket &pkt, VPointCloud &pc);
+    void unpack_vlp16(const velodyne_msgs_vls::VelodynePacket &pkt, VPointCloud &pc);
+    void unpack_vlp32(const velodyne_msgs_vls::VelodynePacket &pkt, VPointCloud &pc);
+    void unpack_hdl32(const velodyne_msgs_vls::VelodynePacket &pkt, VPointCloud &pc);
+    void unpack_hdl64(const velodyne_msgs_vls::VelodynePacket &pkt, VPointCloud &pc);
+    void unpack_vls128(const velodyne_msgs_vls::VelodynePacket &pkt, VPointCloud &pc);
     void compute_xyzi(const uint8_t chan_id, const uint16_t azimuth_uint, const float distance, float &intensity,
       float &x_coord, float &y_coord, float &z_coord);
 

@@ -1,5 +1,5 @@
-<library path="lib/libcloud_nodelet">
-  <class name="velodyne_pointcloud/CloudNodelet"
+<library path="lib/libcloud_nodelet_vls">
+  <class name="velodyne_pointcloud_vls/CloudNodelet"
          type="velodyne_pointcloud::CloudNodelet"
          base_class_type="nodelet::Nodelet">
     <description>
@@ -8,8 +8,8 @@
   </class>
 </library>
 
-<library path="lib/libringcolors_nodelet">
-  <class name="velodyne_pointcloud/RingColorsNodelet"
+<library path="lib/libringcolors_nodelet_vls">
+  <class name="velodyne_pointcloud_vls/RingColorsNodelet"
          type="velodyne_pointcloud::RingColorsNodelet"
          base_class_type="nodelet::Nodelet">
     <description>
@@ -19,8 +19,8 @@
   </class>
 </library>
 
-<library path="lib/libtransform_nodelet">
-  <class name="velodyne_pointcloud/TransformNodelet"
+<library path="lib/libtransform_nodelet_vls">
+  <class name="velodyne_pointcloud_vls/TransformNodelet"
          type="velodyne_pointcloud::TransformNodelet"
          base_class_type="nodelet::Nodelet">
     <description>

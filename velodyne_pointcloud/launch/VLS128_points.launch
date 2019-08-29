@@ -7,7 +7,7 @@
 
   <!-- declare arguments with default values -->
   <arg name="rviz" default="false" />
-  <arg name="calibration" default="$(find velodyne_pointcloud)/params/VeloView_VLS-128_FS1.yaml"/>
+  <arg name="calibration" default="$(find velodyne_pointcloud_vls)/params/VeloView_VLS-128_FS1.yaml"/>
   <arg name="device_ip" default="" />
   <arg name="frame_id" default="velodyne" />
   <arg name="manager" default="$(arg frame_id)_nodelet_manager" />
@@ -21,7 +21,7 @@
   <arg name="rpm" default="600.0" />
 
   <!-- start nodelet manager and driver nodelets -->
-  <include file="$(find velodyne_driver)/launch/nodelet_manager.launch">
+  <include file="$(find velodyne_driver_vls)/launch/nodelet_manager.launch">
     <arg name="device_ip" value="$(arg device_ip)"/>
     <arg name="frame_id" value="$(arg frame_id)"/>
     <arg name="manager" value="$(arg manager)" />
@@ -35,7 +35,7 @@
   </include>
 
   <!-- start cloud nodelet -->
-  <include file="$(find velodyne_pointcloud)/launch/cloud_nodelet.launch">
+  <include file="$(find velodyne_pointcloud_vls)/launch/cloud_nodelet.launch">
     <arg name="calibration" value="$(arg calibration)"/>
     <arg name="manager" value="$(arg manager)" />
     <arg name="max_range" value="$(arg max_range)"/>

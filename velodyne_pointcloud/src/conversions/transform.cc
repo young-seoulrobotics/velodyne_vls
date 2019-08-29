@@ -35,27 +35,27 @@ namespace velodyne_pointcloud
     output_ =
       node.advertise<sensor_msgs::PointCloud2>("velodyne_points", 10);
 
-    srv_ = boost::make_shared <dynamic_reconfigure::Server<velodyne_pointcloud::
+    srv_ = boost::make_shared <dynamic_reconfigure::Server<velodyne_pointcloud_vls::
       TransformNodeConfig> > (private_nh);
-    dynamic_reconfigure::Server<velodyne_pointcloud::TransformNodeConfig>::
+    dynamic_reconfigure::Server<velodyne_pointcloud_vls::TransformNodeConfig>::
       CallbackType f;
     f = boost::bind (&Transform::reconfigure_callback, this, _1, _2);
     srv_->setCallback (f);
-    
+
     // subscribe to VelodyneScan packets using transform filter
     velodyne_scan_.subscribe(node, "velodyne_packets", 10);
     tf_filter_ =
-      new tf::MessageFilter<velodyne_msgs::VelodyneScan>(velodyne_scan_,
+      new tf::MessageFilter<velodyne_msgs_vls::VelodyneScan>(velodyne_scan_,
                                                          listener_,
                                                          config_.frame_id, 10);
     tf_filter_->registerCallback(boost::bind(&Transform::processScan, this, _1));
   }
-  
+
   void Transform::reconfigure_callback(
-      velodyne_pointcloud::TransformNodeConfig &config, uint32_t level)
+      velodyne_pointcloud_vls::TransformNodeConfig &config, uint32_t level)
   {
     ROS_INFO_STREAM("Reconfigure request.");
-    data_->setParameters(config.min_range, config.max_range, 
+    data_->setParameters(config.min_range, config.max_range,
                          config.view_direction, config.view_width);
     config_.frame_id = tf::resolve(tf_prefix_, config.frame_id);
     ROS_INFO_STREAM("Target frame ID: " << config_.frame_id);
@@ -67,7 +67,7 @@ namespace velodyne_pointcloud
    *       the configured @c frame_id can succeed.
    */
   void
-    Transform::processScan(const velodyne_msgs::VelodyneScan::ConstPtr &scanMsg)
+    Transform::processScan(const velodyne_msgs_vls::VelodyneScan::ConstPtr &scanMsg)
   {
     if (output_.getNumSubscribers() == 0)         // no one listening?
       return;                                     // avoid much work

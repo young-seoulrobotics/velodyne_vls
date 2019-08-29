@@ -20,7 +20,7 @@
 #include <math.h>
 #include <ros/ros.h>
 #include <tf/transform_listener.h>
-#include <velodyne_msgs/VelodyneScan.h>
+#include <velodyne_msgs_vls/VelodyneScan.h>
 
 #include "driver.h"
 
@@ -51,7 +51,7 @@ namespace velodyne_driver
       return value;
   }
 
-  inline   double computeTimeStamp(velodyne_msgs::VelodyneScanPtr scan, int index){
+  inline   double computeTimeStamp(velodyne_msgs_vls::VelodyneScanPtr scan, int index){
 
       std::string digit4 = toBinary(scan->packets[index].data[1203]);
       std::string digit3 = toBinary(scan->packets[index].data[1202]);
@@ -331,7 +331,7 @@ VelodyneDriver::VelodyneDriver(ros::NodeHandle node,
 
   // raw packet output topic
   output_ =
-    node.advertise<velodyne_msgs::VelodyneScan>("velodyne_packets", 10);
+    node.advertise<velodyne_msgs_vls::VelodyneScan>("velodyne_packets", 10);
   firing_cycle = slot_time * num_slots; // firing cycle time
 }
 
@@ -343,7 +343,7 @@ VelodyneDriver::VelodyneDriver(ros::NodeHandle node,
 bool VelodyneDriver::poll(void)
 {
   // Allocate a new shared pointer for zero-copy sharing with other nodelets.
-  velodyne_msgs::VelodyneScanPtr scan(new velodyne_msgs::VelodyneScan);
+  velodyne_msgs_vls::VelodyneScanPtr scan(new velodyne_msgs_vls::VelodyneScan);
   scan->packets.resize(config_.npackets);
 
   // Since the velodyne delivers data at a very high rate, keep
