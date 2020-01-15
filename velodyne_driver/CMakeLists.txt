@@ -31,7 +31,7 @@ catkin_package(CATKIN_DEPENDS ${${PROJECT_NAME}_CATKIN_DEPS}
 add_subdirectory(src/lib)
 add_subdirectory(src/driver)
 
-install(DIRECTORY include/${PROJECT_NAME}/
+install(DIRECTORY include/velodyne_driver/
         DESTINATION ${CATKIN_PACKAGE_INCLUDE_DESTINATION})
 install(FILES nodelet_velodyne.xml
         DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION})
